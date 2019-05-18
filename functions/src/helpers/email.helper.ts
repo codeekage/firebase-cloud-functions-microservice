@@ -2,7 +2,7 @@ import * as sgMail from '@sendgrid/mail'
 import * as admin from 'firebase-admin'
 admin.initializeApp();
 const API_KEY =
-  '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'
+  'SG.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 
 interface Email {
     subject : string,
