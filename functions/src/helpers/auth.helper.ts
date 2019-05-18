@@ -11,7 +11,12 @@ interface User {
 }
 
 export default class AuthService extends FirebaseService {
-  signUpEmail = async (email: string, password: string): Promise<Result> => {
+  /**
+   * creates a new user
+   * @param email new email address 
+   * @param password password of user
+   */
+  async signUp(email: string, password: string): Promise<Result>{
     try {
       const data = await this.auth.createUserWithEmailAndPassword(
         email,
@@ -20,7 +25,7 @@ export default class AuthService extends FirebaseService {
       if(data){
         if(data.user){
           data.user.sendEmailVerification({
-            url : "https://us-central1-fire-bookstore.cloudfunctions.net"
+            url : "https://<REGION.APP-NAME>.cloudfunctions.net"
           })
         }
         return Promise.resolve({ success: true, data })
@@ -33,6 +38,11 @@ export default class AuthService extends FirebaseService {
   }
 
 
+  /**
+   * Login user 
+   * @param email users email
+   * @param password user password
+   */
   async login(email: string, password: string): Promise<Result> {
     try {
       const data = await this.auth.signInWithEmailAndPassword(email, password)
@@ -43,6 +53,9 @@ export default class AuthService extends FirebaseService {
     }
   }
 
+  /**
+   * Logout function
+   */
   async logout(): Promise<Result> {
     try {
       await this.auth.signOut()

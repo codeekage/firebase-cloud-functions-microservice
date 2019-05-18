@@ -1,19 +1,25 @@
 import * as firebase from "firebase";
 
 const config = {
-  apiKey: "AIzaSyAqxhRscnUlQb2IlsirOfsitET50rXS6nQ",
-  authDomain: "fire-bookstore.firebaseapp.com",
-  databaseURL: "https://fire-bookstore.firebaseio.com",
-  projectId: "fire-bookstore",
-  storageBucket: "fire-bookstore.appspot.com",
-  messagingSenderId: "285899056065",
-  appId: "1:285899056065:web:39d3f014f7232a8c"
+  apiKey: "AXXXXXXXXXXXXXXXXXXXXXXXXXXXXQ",
+  authDomain: "<APP-NAME>.firebaseapp.com",
+  databaseURL: "https://<APP-NAME>.firebaseio.com",
+  projectId: "<APP-NAME>",
+  storageBucket: "<APP-NAME>.appspot.com",
+  messagingSenderId: "XXXXXXXX",
+  appId: "XXXXXXXXX:web:XXXXXXXX"
 };
 
 firebase.initializeApp(config);
 
 export default class FirebaseService {
+  /**
+   * Firebase Authentication function
+   */
   auth = firebase.auth();
+  /**
+   * Firebase Firestore functions
+   */
   firestore = firebase.firestore();
   constructor() {
     this.auth = this.auth;

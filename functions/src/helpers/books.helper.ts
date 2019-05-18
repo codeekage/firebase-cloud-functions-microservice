@@ -1,13 +1,33 @@
 import FirebaseService from "./firebase.helper";
 
+/**
+ * Result Set 
+ */
 interface Result {
   success: boolean;
   data?: {};
 }
 
+interface Book{
+  title : string,
+  isbn : string,
+  created: string,
+  avaliable : boolean | true | false
+
+}
+
 //extend the FIrebase Helper class
 export default class Books extends FirebaseService {
-  async addBooks(booksObject: object): Promise<Result> {
+  /**
+   * add a new Book to the Firestore
+   * @param booksObject takes an object of Books {
+   *  title : string,
+   *  isbn : string,
+   *  created: date,
+   *  avaliable : boolean | true | false
+   * }
+   */
+  async addBooks(booksObject: Book): Promise<Result> {
     try {
       const user = await this.auth.currentUser;
       if (user) {
@@ -17,7 +37,7 @@ export default class Books extends FirebaseService {
       }
       return Promise.reject({
         success: false,
-        error: {
+        error : {
           type: "Authentication Error",
           message: "You don't have the Permission to do this.."
         }
@@ -28,6 +48,9 @@ export default class Books extends FirebaseService {
     }
   }
 
+  /**
+   * Fetch list of Books 
+   */
   async fetchAllBooks(): Promise<Result> {
     try {
       const user = await this.auth.currentUser;
@@ -52,6 +75,10 @@ export default class Books extends FirebaseService {
     }
   }
 
+  /**
+   * 
+   * @param id Get `BookList` with the specified `id`
+   */
   async fetchBooksById(id: string): Promise<Result> {
     try {
       const user = await this.auth.currentUser;
@@ -73,7 +100,13 @@ export default class Books extends FirebaseService {
     }
   }
 
-  async updateBookById(id: string, updates: object): Promise<Result> {
+
+  /**
+   * Updates the `Book Collection` with the specified `Document ID` 
+   * @param id `Document ID` of the `Book Collection` to update
+   * @param updates Fields to update 
+   */
+  async updateBookById(id: string, updates: Book): Promise<Result> {
     try {
       const user = await this.auth.currentUser;
       if (user) {
@@ -98,6 +131,10 @@ export default class Books extends FirebaseService {
     }
   }
 
+  /**
+   * Deletes a `Book` from `Book Collection` with the specified `ID`
+   * @param id `Document Reference ID` to delete a `Book` 
+   */
   async delteBookById(id: string): Promise<Result> {
     try {
       const user = await this.auth.currentUser;
