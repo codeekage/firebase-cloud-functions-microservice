@@ -48,3 +48,37 @@ To send emails when a new book is added to your users
 export const SG_APIKEY  = 'SG.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 
 ````
+
+## Existing Functionalities
+
+#### Routes 
+- **auth** `/auth`
+ - [POST] `/login` - Assigns User-Token for `firebase security rules`
+ - [POST] `/signup` - Creates a new user
+ - [GET] `/logout` - Remove User-Token 
+ 
+- **user** `/user`
+  - [GET] `/profile` - Retrives currently logged-in user's profile
+  - [PUT] `/update` - Update Currently logged in user's profile
+ 
+ -**book** `/book`
+ - [POST] `/add` - Add a new book to Firestore
+  - [GET] `/fetch` - Retrives all books from Firestors
+  - [GET] `/fetch/:id` - Retrive book with the `id` of `req.params.id`
+  - [PUT] `/update/:id`-  Update book with the `id` of `req.params.id`
+  - [DELETE] `/remove/:id` - Delete book with the `id` of `req.params.id`
+ 
+ #### Triggers 
+ 
+- **onCreateUser** - Trigged when a user signsup and sends email using SendGrid 
+- **onBookArrival** Trigged when a new book is created and sends email using SendGrid 
+
+
+### Custom 
+
+- sendVerifcationEmail - When user signsup. 
+
+
+
+
+
