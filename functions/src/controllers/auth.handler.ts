@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import * as serviceRequest from "request-promise";
 import AuthService from "../helpers/auth.helper";
+import { httpURL as http} from '../keys'
 const auth = new AuthService();
 
-const http = "https://us-central1-fire-bookstore.cloudfunctions.net";
+
 
 export async function handleAsyncLogin(request: Request, response: Response) {
   try {
@@ -82,14 +83,6 @@ export async function handleUserUpdate(request: Request, response: Response) {
     response.status(500).send({ error });
   }
 }
-
-/* function callBack(error: any, responses: any, body: any) {
-  !error && responses.statusCode === 200 ? body : error;
-
-  console.log(body);
-  console.log(error);
-}
- */
 
 async function innerLogin(uri: string, body: object) {
   try {
