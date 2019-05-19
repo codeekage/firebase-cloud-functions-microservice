@@ -10,11 +10,14 @@ export const onBookArrival = async (snap: any, context: any) => {
       html: `
       <div>
         <p>We apperciate you registering for Firestore Bookstore!</p> <br> 
+        Here's our new book Arrivals! 
         <ol>
             <li>Name: ${bookArrival.name}</li>
             <li>Author: ${bookArrival.author}</li>
+            <li>Price: $ ${bookArrival.price}</li>
         </ol>
-        Book Name: 
+        <p>Thank you for your patronage,</p>
+        <p>Team Firestore Bookstore</p>
       </div>`,
 
     })
