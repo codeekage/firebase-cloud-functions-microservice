@@ -24,9 +24,10 @@ export default class AuthService extends FirebaseService {
       )
       if(data){
         if(data.user){
-          data.user.sendEmailVerification({
-            url : "https://<REGION.APP-NAME>.cloudfunctions.net"
+          await data.user.sendEmailVerification({
+            url : "https://fire-bookstore.firebaseapp.com"
           })
+        
         }
         return Promise.resolve({ success: true, data })
       }

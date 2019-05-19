@@ -5,7 +5,7 @@ import FirebaseService from "./firebase.helper";
  */
 interface Result {
   success: boolean;
-  data?: {};
+  data: {} | undefined;
 }
 
 interface Book{
@@ -58,9 +58,12 @@ export default class Books extends FirebaseService {
         const result = new Array();
         const snapshot = await this.firestore.collection("books").get();
         snapshot.forEach(async books => {
-          await result.push(books);
+          const id = {_id: books.id}
+          const data = books.data()
+          const resolveObjects =  Object.assign({}, id, data)
+          await result.push(resolveObjects);
         });
-        return Promise.resolve({ success: true, result });
+        return Promise.resolve({ success: true, data :result });
       }
       return Promise.reject({
         success: false,

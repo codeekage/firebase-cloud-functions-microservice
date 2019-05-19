@@ -2,7 +2,7 @@ import * as sgMail from '@sendgrid/mail'
 import * as admin from 'firebase-admin'
 admin.initializeApp();
 const API_KEY =
-  'SG.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+  'SG.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 
 interface Email {
     subject : string,
@@ -19,7 +19,7 @@ export default class EmailService {
         sgMail.setApiKey(API_KEY)
         const msg = {
           to: email,
-          from: 'noreply@fire-bookstore.firebaseapp.com',
+          from: 'noreply@<APP_NAME>.firebaseapp.com',
           subject: message.subject,
           html: message.html
         }

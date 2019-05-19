@@ -1,8 +1,7 @@
 import * as express from "express";
 import * as cors from "cors";
 import {
-  handleLogin,
-  handleLogout
+  handleLogin, handleLogout,
 } from "../controllers/auth.handler";
 import {
   handleAddBooks,
@@ -16,9 +15,9 @@ export const service = express();
 service.use(cors());
 
 service.post("/login", handleLogin);
-service.get("/", handleFetchBooks);
-service.post("/", handleAddBooks);
-service.get("/:id", handleFetchBooksById);
-service.put("/:id", handleUpdateBookById);
-service.delete("/:id", handleDeleteBookById);
+service.get("/fetch", handleFetchBooks);
+service.post("/add", handleAddBooks);
+service.get("fetch/:id", handleFetchBooksById);
+service.put("update/:id", handleUpdateBookById);
+service.delete("remove/:id", handleDeleteBookById);
 service.get("/logout", handleLogout);

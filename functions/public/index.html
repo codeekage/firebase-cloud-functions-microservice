@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Test Scripts!</title>
+  </head>
+  <body>
+    <div>
+      <input type="email" name="email" id="email" placeholder="email" />
+      <input type="text" name="password" id="password" placeholder="password" />
+      <input type="submit" value="login" id="submit" />
+    </div>
+
+    <script>
+     const URL = "https://<REGION-APP_NAME>.cloudfunctions.net";
+      document.querySelector("#submit").addEventListener("click", async e => {
+        e.preventDefault();
+        const email = document.querySelector("#email").value;
+        const password = document.querySelector("#password").value;
+        const login = await post(`${URL}/auth/login`,{email, password})         
+        console.log(login)
+      });
+
+   
+      async function post(url, body) {
+        try {
+          const logged = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify(body),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          });
+          const json = await logged.json();
+          return json;
+        } catch (error) {
+          console.error(error);
+          return error;
+        }
+      }
+      async function get(url) {
+        const data = await fetch(url);
+        const json = await data.json();
+        return await json;
+      }
+    </script>
+  </body>
+</html>
