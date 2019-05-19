@@ -12,7 +12,21 @@ Ensure you have the following installed before running `npm install`
 
 ## API_KEY 
  
- Obtain **Application API_KEY** from Firebase and replace with the string in `src/helpers/firebase.helper.ts`
+ Obtain **Application API_KEY** from Firebase Configs and create `keys.ts` in the root directory of the `functions` folder
+ 
+ ```javascript 
+ 
+ export const firebaseConfig = {
+    apiKey: "AXXXXXXXXXXXXXXXXXXXXXXXQ",
+    authDomain: "<APP_NAME>.firebaseapp.com",
+    databaseURL: "https://<APP_NAME>.firebaseio.com",
+    projectId: "<PROJECT_ID>",
+    storageBucket: "<APP_NAME>.appspot.com",
+    messagingSenderId: "XXXXXXXXXX",
+    appId: "XXXXXXXXXXXXXXXXXXXXXXXXX"
+}
+ 
+ ```
 
 ## Upgrade Firebase Account
 You'd want to upgrade your Firebase Project from the Free Tier to Blaze. Without the upgrade the application will resolve to a _netwowrk outofbound ERROR_
@@ -26,4 +40,11 @@ You'd want to upgrade your Firebase Project from the Free Tier to Blaze. Without
 To send emails when a new book is added to your users
 - Create a Twilio SendGrid Account https://sendgrid.com
 - Obtain API_KEY from `sendgrid`
-- Create `keys.ts` in the root directory of the `functions` folder 
+- Update `keys.ts` in the root directory of the `functions` folder 
+
+```javascript
+......
+
+export const SG_APIKEY  = 'SG.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+
+````
