@@ -1,16 +1,6 @@
 import * as firebase from "firebase";
-
-const config = {
-  apiKey: "AXXXXXXXXXXXXXXXXXXXXXXXXXXXXXQ",
-  authDomain: "<APP_NAME>.firebaseapp.com",
-  databaseURL: "https://<APP_NAME>.firebaseio.com",
-  projectId: "<PROJECT_ID>",
-  storageBucket: "<PROJECT_ID>.appspot.com",
-  messagingSenderId: "XXXXXXXXXXXX",
-  appId: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-};
-
-firebase.initializeApp(config);
+import {firebaseConfig} from '../keys'
+firebase.initializeApp(firebaseConfig);
 
 export default class FirebaseService {
   auth = firebase.auth();

@@ -25,5 +25,5 @@ You'd want to upgrade your Firebase Project from the Free Tier to Blaze. Without
 
 To send emails when a new book is added to your users
 - Create a Twilio SendGrid Account https://sendgrid.com
-- Obtain API_KEY 
-- Replace the 
+- Obtain API_KEY from `sendgrid`
+- Create `keys.ts` in the root directory of the `functions` folder 

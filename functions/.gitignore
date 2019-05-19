@@ -4,5 +4,5 @@
 
 # Typescript v1 declaration files
 typings/
-
+keys.ts
 node_modules/
