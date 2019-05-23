@@ -1,5 +1,14 @@
-# firebase-cloud-functions-microservice
-Microservice designed with Firebase Cloud Functions and Firestore
+# Firestore Bookstore (firebase-cloud-functions-microservice)
+Microservice designed with Firebase Cloud Functions and Firestore 
+
+
+## Features 
+
+- Authentication
+- Email Verification on new sign ups
+- Unverified emails should deny read and write access
+- Email Notification on new books arrival
+- The email should also contain details and a link to view the newly added book
 
 ## Setups
 
@@ -74,11 +83,6 @@ export const SG_APIKEY  = 'SG.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 - **onBookArrival** Trigged when a new book is created and sends email using SendGrid 
 
 
-### Custom 
-
-- sendVerifcationEmail - When user signsup. 
-
-
-
+[Read more...](https://medium.com/@codeekage/building-scalable-applications-with-google-cloud-services-part-5-microservices-with-firebase-96819c70574d)
 
 
